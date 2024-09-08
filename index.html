@@ -2,6 +2,11 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body {
+        user-select: none;
+      }
+    </style>
   </head>
   <body>
     <Table Border=2>
@@ -35,11 +40,9 @@
       iframe.addEventListener("load", () => {
         for (const {id, key} of keys) {
           document.getElementById(id).addEventListener("pointerdown", (e) => {
-            e.preventDefault();
             iframe.contentDocument.dispatchEvent(new KeyboardEvent("keydown", {key}));
           });
           document.getElementById(id).addEventListener("pointerup", (e) => {
-            e.preventDefault();
             iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key}));
           });
         }
