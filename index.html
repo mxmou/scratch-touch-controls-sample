@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       body {
-        user-select: none;
+        user-select: none
       }
     </style>
   </head>
@@ -28,22 +28,22 @@
     </map>
     <script>
       const keys = [
-        {id: "keyspace", key: " "},
-        {id: "keyup", key: "ArrowUp"},
-        {id: "keydown", key: "ArrowDown"},
-        {id: "keyleft", key: "ArrowLeft"},
-        {id: "keyright", key: "ArrowRight"},
-        {id: "keya", key: "a"},
-        {id: "keyb", key: "b"},
+        {id: "keyspace", key: " ", code: "Space"},
+        {id: "keyup", key: "ArrowUp", code: "ArrowUp"},
+        {id: "keydown", key: "ArrowDown", code: "ArrowDown"},
+        {id: "keyleft", key: "ArrowLeft", code: "ArrowLeft"},
+        {id: "keyright", key: "ArrowRight", code: "ArrowRight"},
+        {id: "keya", key: "a", code: "KeyA"},
+        {id: "keyb", key: "b", code: "KeyB"},
       ];
       const iframe = document.querySelector("iframe")
       iframe.addEventListener("load", () => {
-        for (const {id, key} of keys) {
+        for (const {id, key, code} of keys) {
           document.getElementById(id).addEventListener("pointerdown", (e) => {
-            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keydown", {key}));
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keydown", {key, code}));
           });
           document.getElementById(id).addEventListener("pointerup", (e) => {
-            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key}));
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key, code}));
           });
         }
       });
