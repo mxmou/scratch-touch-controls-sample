@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <Table Border=2>
+      <TR>
+      <TD><iframe src="TestGame.html" sandbox="allow-scripts allow-same-origin" allowtransparency="true" width="480" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe></TD>
+      </TR>
+      <TR>
+      <TD><img src="controller.png" usemap="#controls" width="480" height="360"></TD>
+      </TR>
+    </Table>
+    <map name="controls">
+      <area id="keyup" alt="Up Arrow Key" title="Up" coords="85,50,146,110" shape="rect">
+      <area id="keyright" alt="Right Arrow Key" title="Right" coords="148,110,208,174" shape="rect">
+      <area id="keyleft" alt="Left Arrow Key" title="Left" coords="22,110,84,174" shape="rect">
+      <area id="keydown" alt="Down Arrow Key" title="Down" coords="85,175,146,235" shape="rect">
+      <area id="keyspace" alt="Space Bar" title="Space" coords="145,285,335,325" shape="rect">
+      <area id="keyb" alt="B Button" title="B" coords="345,196,40" shape="circle">
+      <area id="keya" alt="A Button" title="A" coords="420,125,40" shape="circle">
+    </map>
+    <script>
+      const keys = [
+        {id: "keyspace", key: " "},
+        {id: "keyup", key: "ArrowUp"},
+        {id: "keydown", key: "ArrowDown"},
+        {id: "keyleft", key: "ArrowLeft"},
+        {id: "keyright", key: "ArrowRight"},
+        {id: "keya", key: "a"},
+        {id: "keyb", key: "b"},
+      ];
+      const iframe = document.querySelector("iframe")
+      iframe.addEventListener("load", () => {
+        for (const {id, key} of keys) {
+          document.getElementById(id).addEventListener("pointerdown", (e) => {
+            e.preventDefault();
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keydown", {key}));
+          });
+          document.getElementById(id).addEventListener("pointerup", (e) => {
+            e.preventDefault();
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key}));
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
