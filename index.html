@@ -28,22 +28,22 @@
     </map>
     <script>
       const keys = [
-        {id: "keyspace", key: " ", code: "Space", keyCode: 32},
-        {id: "keyup", key: "ArrowUp", code: "ArrowUp", keyCode: 38},
-        {id: "keydown", key: "ArrowDown", code: "ArrowDown", keyCode: 40},
-        {id: "keyleft", key: "ArrowLeft", code: "ArrowLeft", keyCode: 37},
-        {id: "keyright", key: "ArrowRight", code: "ArrowRight", keyCode: 39},
-        {id: "keya", key: "a", code: "KeyA", keyCode: 65},
-        {id: "keyb", key: "b", code: "KeyB", keyCode: 66},
+        {id: "keyspace", key: " ", keyCode: 32},
+        {id: "keyup", key: "ArrowUp", keyCode: 38},
+        {id: "keydown", key: "ArrowDown", keyCode: 40},
+        {id: "keyleft", key: "ArrowLeft", keyCode: 37},
+        {id: "keyright", key: "ArrowRight", keyCode: 39},
+        {id: "keya", key: "a", keyCode: 65},
+        {id: "keyb", key: "b", keyCode: 66},
       ];
       const iframe = document.querySelector("iframe")
       iframe.addEventListener("load", () => {
-        for (const {id, key, code, keyCode} of keys) {
+        for (const {id, key, keyCode} of keys) {
           document.getElementById(id).addEventListener("pointerdown", (e) => {
-            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keydown", {key, code, keyCode}));
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keydown", {key, keyCode}));
           });
           document.getElementById(id).addEventListener("pointerup", (e) => {
-            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key, code, keyCode}));
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key, keyCode}));
           });
         }
       });
