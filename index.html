@@ -45,6 +45,9 @@
           document.getElementById(id).addEventListener("pointerup", (e) => {
             iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key, keyCode}));
           });
+          document.getElementById(id).addEventListener("pointerleave", (e) => {
+            iframe.contentDocument.dispatchEvent(new KeyboardEvent("keyup", {key, keyCode}));
+          });
         }
       });
     </script>
